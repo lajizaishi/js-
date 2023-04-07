@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js常见几种继承方式</title>
+</head>
+<style>
+    .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+</style>
+<body>
+<div class="box">
+    <h1>JS常见继承方式</h1>
+    <p>
+        // 1、原型链继承<br>
+        //  优点： 父类方法可以复用<br>
+        //  缺点: 1.父类所有引用类型数据数据会被子类共享，更改一个子类的数据其他数据会受到影响一直变化<br>
+        //       2.子类不能给父类构造函数传参<br>
+        // 2、构造函数的继承<br>
+        //  优点：父类引用类型的数据不会被子类共享，不会互相影响<br>
+        //  缺点：子类不能访问父类原型属性（prototype）上的方法和属性<br>
+        // 3、 组合继承<br>
+        //  优点：1.父类可以复用<br>
+        //       2.父类构造函数中的引用属性数据不会被共享<br>
+        //  缺点：会调用两次父级的构造函数，会有两份一样的属性和方法，会影响性能<br>
+        // 4、寄生组合继承<br>
+        //       目前最优的一个继承方案<br>
+        // 5、class类继承extends<br>
+    </p>
+</div>
+<script>
+    // 1、原型链继承
+    // function Person(){
+    //     this.name = '小明'
+    //     this.eats = ['苹果']
+    //     this.getName = function () {
+    //         console.log(this.name)
+    //     }
+    // }
+    // Person.prototype.get = () => {
+    //     console.log('Person.prototype上的方法')
+    // }
+    // function Student() {}
+    // Student.prototype = new Person()
+    //
+    // const stu1 = new Student();
+    // stu1.name = "小红"
+    // stu1.eats.push('香蕉')
+    // console.log(stu1.name)
+    // console.log(stu1.eats)
+    // stu1.getName()
+    // stu1.get()
+    // console.log('------------stu1',stu1)
+    // console.log('-------------------------------')
+    // const stu2 = new Student();
+    // console.log(stu2.name)
+    // console.log(stu2.eats)
+    // stu2.getName()
+    // stu2.get()
+    // console.log('------------stu2',stu2)
+
+
+    // 2、构造函数继承
+    // function Person(){
+    //     this.name = '小明'
+    //     this.eats = ['苹果']
+    //     this.getName = function (){
+    //         console.log(this.name)
+    //     }
+    // }
+    // Person.prototype.get = () => {
+    //     console.log('Person.prototype上的方法')
+    // }
+    // function Student() {
+    //     Person.call(this)
+    // }
+    // Student.prototype = new Person()
+    //
+    // const stu1 = new Student();
+    // stu1.name = "小红"
+    // stu1.eats.push('香蕉')
+    // console.log(stu1.name)
+    // console.log(stu1.eats)
+    // stu1.getName()
+    // stu1.get()
+    // console.log('------------stu1',stu1)
+    // console.log('-------------------------------')
+    // const stu2 = new Student();
+    // console.log(stu2.name)
+    // console.log(stu2.eats)
+    // stu2.getName()
+    // stu2.get()
+    // console.log('------------stu2',stu2)
+
+    // 3、组合式继承
+    // function Person(){
+    //     this.name = '小明'
+    //     this.eats = ['苹果']
+    //     this.getName = function (){
+    //         console.log(this.name)
+    //     }
+    // }
+    // Person.prototype.get = () => {
+    //     console.log('Person.prototype上的方法')
+    // }
+    // function Student() {
+    //     Person.call(this)
+    // }
+    //
+    // Student.prototype = new Person()
+    //
+    // const stu1 = new Student();
+    // stu1.name = "小红"
+    // stu1.eats.push('香蕉')
+    // console.log(stu1.name)
+    // console.log(stu1.eats)
+    // stu1.getName()
+    // stu1.get()
+    // console.log('------------stu1',stu1)
+    // console.log('-------------------------------')
+    // const stu2 = new Student();
+    // console.log(stu2.name)
+    // console.log(stu2.eats)
+    // stu2.getName()
+    // stu2.get()
+    // console.log('------------stu2',stu2)
+
+
+    // 4、寄生组合继承
+    // function Person(){
+    //     this.name = '小明'
+    //     this.eats = ['苹果']
+    //     this.getName = function (){
+    //         console.log(this.name)
+    //     }
+    // }
+    // Person.prototype.get = () => {
+    //     console.log('Person.prototype上的方法')
+    // }
+    // function Student() {
+    //     Person.call(this)
+    // }
+    //
+    // // Student.prototype = new Person()
+    // const Fn = function (){}
+    // Fn.prototype = Person.prototype;
+    // Student.prototype = new Fn()
+    // const stu1 = new Student();
+    // stu1.name = "小红"
+    // stu1.eats.push('香蕉')
+    // console.log(stu1.name)
+    // console.log(stu1.eats)
+    // stu1.getName()
+    // stu1.get()
+    // console.log('------------stu1',stu1)
+    // console.log('-------------------------------')
+    // const stu2 = new Student();
+    // console.log(stu2.name)
+    // console.log(stu2.eats)
+    // stu2.getName()
+    // stu2.get()
+    // console.log('------------stu2',stu2)
+
+
+    // 5、class类继承extends
+    // class Person{
+    //     constructor() {
+    //         this.name = "小明";
+    //         this.eats = ["苹果"];
+    //         this.getName = function (){
+    //             console.log(this.name)
+    //         }
+    //     }
+    //     get = () => {
+    //         console.log("Person.prototype上的方法")
+    //     }
+    // }
+    // class Student extends  Person {}
+    // const stu1 = new Student();
+    // stu1.name = "小红"
+    // stu1.eats.push('香蕉')
+    // console.log(stu1.name)
+    // console.log(stu1.eats)
+    // stu1.getName()
+    // stu1.get()
+    // console.log('------------stu1',stu1)
+    // console.log('-------------------------------')
+    // const stu2 = new Student();
+    // console.log(stu2.name)
+    // console.log(stu2.eats)
+    // stu2.getName()
+    // stu2.get()
+    // console.log('------------stu2',stu2)
+</script>
+</body>
+</html>
